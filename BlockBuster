@@ -1,0 +1,114 @@
+public static void main(String[] args) {
+	interface Payment{
+		   void updatedValue(double Value);
+		   double getValue();
+		}
+		class Cash implements Payment{
+		   public double Value;
+		   public Cash(double v){
+		       Value=v;
+		   }
+		   public void updatedValue(double Value){
+		       this.Value+=Value;
+		   }
+		   public double getValue(){
+		       return Value;
+		   }
+		}
+		class DinnerCard implements Payment{
+		   private String CardNumber;
+		   private String ExpirationDate;
+		   private double Value;
+		   public DinnerCard(double Value,String CardNumber,String ExpirationDate){
+		   this.Value=Value;
+		   this.CardNumber=CardNumber;
+		   this.ExpirationDate=ExpirationDate;
+		   }
+		   public void updatedValue(double Value){
+		       this.Value+=Value;
+		   }
+		   public double getValue(){
+		       return Value;
+		   }
+		   public void UpdateExpirationDate(String s){
+		       ExpirationDate=s;
+		   }
+		   public String GetExpirationDate(){
+		       return ExpirationDate;
+		   }
+		}
+		class StoreItem{
+		   public String Title;
+		   protected double Price;
+		   public StoreItem(String Title,double Price){
+		       this.Title=Title;
+		       this.Price=Price;
+		   }
+		   public String getTitle(){
+		       return Title;
+		   }
+		   public void UpdatePrice(double d){
+		       Price+=d;
+		   }
+		}
+
+		class Movie extends StoreItem{
+		   public double Length;
+		   public Movie(String Title,double Price,double Length){
+		       super(Title,Price);
+		       this.Length=Length;
+		   }
+		   public double getMovieLength(){
+		       return Length;
+		   }
+		}
+
+		class VHS extends Movie{
+		   public VHS(String Title,double Price,double Length){
+		       super(Title,Price,Length);
+		   }
+		}
+
+		class LaserDisc extends Movie{
+		   public int RPM;
+		   public LaserDisc(String Title,double Price,double Length,int RPM){
+		       super(Title,Price,Length);
+		       this.RPM=RPM;
+		   }
+		}
+
+		class Rental {
+		   public StoreItem Collection[];
+		   public boolean addStoreItem(StoreItem s){
+		       return true;
+		   }
+		   public StoreItem getStoreItem(int i){
+		       return Collection[i];
+		   }
+		}
+
+		class CahsRegister{
+		   private Rental currentSale;
+		   public boolean updateRental(StoreItem item){
+		       currentSale.addStoreItem(item);
+		       return true;
+		   }
+		   public Rental completeSale(Payment p){
+		       return currentSale;
+		   }
+		   private boolean removeCurrentSale(){
+		       return true;
+		   }
+		}
+
+		class MinimumWageEmployee{
+		   public String Name;
+		   private double Salary;
+		   public boolean AddToRental(StoreItem s){
+		       return true;
+		   }
+		   public boolean ProcessSale(Payment p){
+		       return true;
+		   }
+		}
+}
